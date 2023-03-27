@@ -1,20 +1,13 @@
-function divMaker(numOfDivs, optionalContainer) {
-  for (let i = 0; i < numOfDivs; i++) {
+const container = document.querySelector(".container");
+
+function gridMaker(numOfGrid = 16, containerWidth = 500) {
+  for (let i = 0; i < numOfGrid * numOfGrid; i++) {
     let div = document.createElement("div");
-    div.classList.add("square-div")
-    document.body.appendChild(div);
-    if (optionalContainer) {
-      optionalContainer.appendChild(div);
-    }
+    container.style.width = `${containerWidth}px`;
+    div.classList.add("square-div");
+    div.style.setProperty("--myCellWidth", `${containerWidth / numOfGrid}px`);
+    div.style.setProperty("--myCellHeight", `${containerWidth / numOfGrid}px`);
+    container.appendChild(div);
   }
 }
-const container = document.querySelector(".container");
-divMaker(500, container);
-
-
-// const squares = document.querySelectorAll(".square-div");
-// squares.forEach(square => {
-//     square.addEventListener("mouseover", (e)=>{
-//         e.target.style.backgroundColor = "blue"
-//     })
-// })
+gridMaker();
