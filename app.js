@@ -11,3 +11,10 @@ function gridMaker(numOfGrid = 16, containerWidth = 500) {
   }
 }
 gridMaker();
+
+const squares = document.querySelectorAll(".square-div");
+squares.forEach((square) => {
+  square.addEventListener("mouseover", (e) => {
+    e.target.style.backgroundColor = "red";
+  });
+});
